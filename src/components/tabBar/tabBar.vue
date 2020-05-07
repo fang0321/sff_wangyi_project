@@ -34,7 +34,7 @@
 	}
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style scoped lang="stylus" rel="stylesheet/stylus">
 	.tarBar
 		display flex
 		position fixed
@@ -45,8 +45,6 @@
 		background-color #fff
 		border-top 1px solid rgb(217, 217, 217)
 		.tarBarItem
-			// width 25%
-			// height 100%
 			display flex
 			flex 1
 			flex-direction column
@@ -57,6 +55,7 @@
 				height	40px
 				background-image:url('./tabBar.png')
 				background-repeat no-repeat
+				background-size 100% 
 				&.icon-homePage
 					background-position 0px -250px
 				&.icon-category
@@ -71,7 +70,7 @@
 				margin-top 7px
 			&.active
 				span 
-					color red
+					color #DD1A21
 				.icon-homePage
 					background-position 0px -200px
 				.icon-category

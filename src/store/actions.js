@@ -1,0 +1,11 @@
+import {GETKINGKONGLIST} from './mutation_type'
+import http from '../http'
+
+export default {
+  async [GETKINGKONGLIST] (store){
+    const body = await http.shop.getKingKongList()
+    if(body){
+      store.commit(GETKINGKONGLIST,body)
+    }
+  }
+}
