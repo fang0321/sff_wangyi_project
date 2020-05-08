@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    Category
+    
   </div>
 </template>
 <script>
@@ -8,5 +8,5 @@
     name:"Category"
   }
 </script>
-<style scoped>
+<style scoped lang="stylus" rel="stylesheet/stylus">
 </style>

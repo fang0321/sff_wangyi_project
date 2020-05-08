@@ -33,10 +33,10 @@
           <div class="toggle iconfont" :class="navPull ? 'icon-xiala1':'icon-xiala'" @click="navPull = !navPull"></div>
         </div>
         <div class="moreCate">
-          <div class="moreCateItem">
+          <div class="moreCateItem" :class="{active:navIndex===0}" @click="changeActive(0)">
             推荐
           </div>
-          <div class="moreCateItem" v-for="(item, index) in kingKongList" :key="index">
+          <div @click="changeActive(index + 1)" class="moreCateItem" :class="{active:navIndex===index + 1}" v-for="(item, index) in kingKongList" :key="index">
             {{item.text}}
           </div>
         </div>
@@ -45,13 +45,40 @@
     <!-- 内容区 -->
     <div class="content">
       <!-- 轮播图 -->
-      <div class="bannerWrap">轮播图部分</div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item, index) in focusList" :key="index">
+            <img :src="item.picUrl" alt="">
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
       <!-- 服务栏 -->
-      <div class="serviceWrap">商家服务栏</div>
+      <div class="serviceWrap">
+        <ul class="service">
+          <li class="serviceItem" v-for="(item, index) in PolicyDescList" :key="index">
+            <img :src="item.icon" alt="">
+            <span>{{item.desc}}</span>
+          </li>
+        </ul>
+      </div>
       <!-- 商品分类 -->
-      <div class="goodsCategory">商品分类部分</div>
+      <div class="goodsCategoryWrap">
+        <ul class="goodsCategory">
+          <li class="goodsCategoryItem" v-for="(item, index) in kingKongList" :key="index">
+            <a href="##">
+              <img :src="item.picUrl" alt="">
+              <span>{{item.text}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <!-- 优惠专区 -->
-      <div class="discounts">优惠专区</div>
+      <div class="discountsWrap">
+        <div class="discounts">
+          <a class="discountsImg" href="##"></a>
+        </div>
+      </div>
       <!-- 新人专享礼 -->
       <v-newPeopleGift></v-newPeopleGift>
       <!-- 类目热销榜 -->
@@ -72,7 +99,9 @@
   </div>
 </template>
 <script>
+  import Swiper from 'swiper'
   import BScroll from 'better-scroll'
+  import "swiper/css/swiper.min.css"
   import newPeopleGift from '../../components/newPeopleGift/newPeopleGift'
   import hotSell from '../../components/hotSell/hotSell'
   import recommend from '../../components/recommend/recommend'
@@ -80,13 +109,14 @@
   import newProduct from '../../components/newProduct/newProduct'
   import shoppingModule from '../../components/shoppingModule/shoppingModule'
   import {mapActions,mapState} from 'vuex'
-  import {GETKINGKONGLIST} from '../../store/mutation_type'
+  import {GETKINGKONGLIST,GETFOCUSLIST} from '../../store/mutation_type'
   export default{
     name:"HomePage",
     data(){
       return {
         navIndex:0,
-        navPull:true
+        navPull:false,
+        PolicyDescList:[]
       }
     },
     components:{
@@ -99,19 +129,28 @@
     },
     async mounted(){
       await this[GETKINGKONGLIST]()
+      await this[GETFOCUSLIST]()
       this.$nextTick(()=>{
         new BScroll(this.$refs.navScroll,{scrollX:true,click:true})
       })
+      this.$nextTick(()=>{
+        new Swiper('.swiper-container',{
+          loop:true, //循环模式
+          pagination: { //分页器
+            el: '.swiper-pagination',
+          }
+        })
+      })
+      this.PolicyDescList = await this.$http.shop.getPolicyDescList("/getPolicyDescList")
     },
     methods:{
-      ...mapActions([GETKINGKONGLIST]),
+      ...mapActions([GETKINGKONGLIST,GETFOCUSLIST]),
       changeActive(index){
-        console.log("点我了");
         this.navIndex = index
       }
     },
     computed:{
-      ...mapState(["kingKongList"])
+      ...mapState(["kingKongList","focusList"])
     }
   }
 </script>
@@ -125,6 +164,7 @@
     box-sizing border-box
     .header //顶部
       position fixed 
+      z-index 99
       top 0
       left 0
       width 100%
@@ -246,10 +286,12 @@
           display none
           background-color #fff
           width 100%
+          z-index 20
           // height 288px
           padding-top 24px
           box-sizing border-box
           .moreCateItem
+            position relative
             float left
             width 150px
             height 56px
@@ -258,6 +300,9 @@
             border: 1px solid #CCC
             margin 0 0 40px 30px
             border-radius: 5px
+            &.active
+              border: 1px solid #DD1A21;
+              color: #DD1A21;
         &.pull
           .tabAlter
             display block
@@ -268,22 +313,75 @@
       width 100%
       height 100%
       overflow auto
-      .bannerWrap //轮播图
+      .swiper-container //轮播图
         width 100%
         height 296px
-        background-color #aaffdd
+        overflow hidden
+        .swiper-wrapper
+          width 100%
+          height 100%
+          .swiper-slide
+            width 100%
+            height 100%
+            img
+              width 100%
+              height auto
       .serviceWrap //服务栏
         width 100%
         height 72px
-        background-color #fcb
-      .goodsCategory //商品分类
+        background-color #fff
+        .service
+          width 100%
+          height 100%
+          padding 0 30px
+          box-sizing border-box
+          display flex
+          align-items center
+          justify-content space-around
+          .serviceItem
+            img 
+              display inline-block
+              width 32px
+              height 32px
+              vertical-align middle
+              margin-right 8px
+            span 
+              vertical-align middle
+      .goodsCategoryWrap //商品分类
         width 100%
         height 372px
-        background-color #abc
-      .discounts  //优惠专区
+        background-color #fff
+        .goodsCategory
+          .goodsCategoryItem
+            width 110px
+            height 156px
+            margin 10px 20px 9px 20px
+            float left
+            a
+              width 110px
+              height 110px
+              display flex
+              flex-direction column
+              align-items center
+              img
+                width 100%
+                height 100%
+              span 
+                margin-top 10px
+                font-size 24px
+                color rgb(51, 51, 51)
+      .discountsWrap  //优惠专区
         width 100%
         height 240px
         background-color #cbf
+        .discounts
+          width 100%
+          height 100%
+          .discountsImg
+            width 100%
+            height 100%
+            background-image url('./images/discounts.gif')
+            background-size 100%
     .footer
       width 100%
       height 244px

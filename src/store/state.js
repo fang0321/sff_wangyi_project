@@ -1,3 +1,4 @@
 export default {
-  kingKongList:[]
+  kingKongList:[],
+  focusList:[]
 }
