@@ -16,7 +16,7 @@
 			<i class="icon icon-shoppingCart"></i>
 			<span>购物车</span>
 		</div>
-		<div href="javascript:;" class="tarBarItem" @click="goto('personal')" :class="{active:$route.path=='/personal'}">
+		<div href="javascript:;" class="tarBarItem" @click="gotoByIsLogin" :class="{active:$route.path=='/personal'}">
 			<i class="icon icon-personal"></i>
 			<span>个人</span>
 		</div>
@@ -24,11 +24,22 @@
 </template>
 
 <script>
+	import {mapState} from 'vuex'
 	export default {
 		name:"TarBar",
+		computed:{
+			...mapState(["isLogin"])
+		},
 		methods:{
 			goto(path){
 				this.$router.replace(path)
+			},
+			gotoByIsLogin(){
+				if(this.isLogin){
+					this.$router.replace('personal')
+				}else{
+					this.$router.replace('login')
+				}
 			}
 		}
 	}

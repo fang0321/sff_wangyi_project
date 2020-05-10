@@ -352,6 +352,7 @@
         height 372px
         background-color #fff
         .goodsCategory
+          overflow hidden
           .goodsCategoryItem
             width 110px
             height 156px

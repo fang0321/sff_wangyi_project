@@ -3,6 +3,8 @@ import category from '../pages/category/category.vue'
 import worth from '../pages/worth/worth.vue'
 import shoppingCart from '../pages/shoppingCart/shoppingCart.vue'
 import personal from '../pages/personal/personal.vue'
+import login from '../pages/login/login.vue'
+import emailLogin from '../pages/emailLogin/emailLogin.vue'
 
 export default [
   {path:"/homePage",component:homePage},
@@ -10,5 +12,7 @@ export default [
   {path:"/worth",component:worth},
   {path:"/shoppingCart",component:shoppingCart},
   {path:"/personal",component:personal},
+  {path:"/login",component:login},
+  {path:"/emailLogin",component:emailLogin},
   {path:"/",redirect:"/homePage"}
 ]

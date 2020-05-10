@@ -1,4 +1,5 @@
 export default {
   kingKongList:[],
-  focusList:[]
+  focusList:[],
+  isLogin:true
 }
