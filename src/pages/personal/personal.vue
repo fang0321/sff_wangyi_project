@@ -4,7 +4,7 @@
       <div class="left">
         <img class="userImg" src="./userImg.png" alt="">
         <div class="info">
-          <span class="username">妍菲儿baby15714742408</span>
+          <span class="username">{{getUserInfo}}</span>
           <span class="usertype">钻石用户</span>
         </div>
       </div>
@@ -49,6 +49,7 @@
   </div>
 </template>
 <script>
+  import local from '../../util/local'
   export default{
     name:"Personal",
     data() {
@@ -107,7 +108,14 @@
         if(confirm('确定退出吗？')){
           this.$store.state.isLogin = false
           this.$router.replace('login')
+          local.remove("emailInfo")
         }
+      }
+    },
+    computed:{
+      getUserInfo(){
+        let userInfo = local.get("emailInfo")
+        return userInfo
       }
     }
   }

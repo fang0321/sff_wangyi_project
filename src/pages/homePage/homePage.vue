@@ -5,7 +5,7 @@
       <!-- 搜索 -->
       <div class="searchWrap">
         <a class="logo" href="##"></a>
-        <div class="search">
+        <div class="search" @click="$router.replace('search')">
           <i class="iconfont icon-fangdajing"></i>
           <span>搜索商品，共25353款好物</span>
         </div>

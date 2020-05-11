@@ -24,18 +24,15 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import local from '../../util/local'
 	export default {
 		name:"TarBar",
-		computed:{
-			...mapState(["isLogin"])
-		},
 		methods:{
 			goto(path){
 				this.$router.replace(path)
 			},
 			gotoByIsLogin(){
-				if(this.isLogin){
+				if(local.get("emailInfo")){
 					this.$router.replace('personal')
 				}else{
 					this.$router.replace('login')

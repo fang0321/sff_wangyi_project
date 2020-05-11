@@ -6,7 +6,23 @@ const postcss = px2rem({
 
 module.exports = {
   devServer:{
-    proxy:"http://localhost:3001"
+    // proxy:"http://localhost:3001"
+    proxy:{
+      '/3001':{
+        target:"http://localhost:3001",
+        changeOrigin:true,
+        pathRewrite:{
+          "^/3001":""
+        }
+      },
+      '163':{
+        target:"https://m.you.163.com",
+        changeOrigin:true,
+        pathRewrite:{
+          "^/163":""
+        }
+      }
+    }
   },
   css: {
     loaderOptions: {

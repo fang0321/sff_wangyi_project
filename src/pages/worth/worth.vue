@@ -6,7 +6,7 @@
       </div>
       <span class="txt">值得买</span>
       <div>
-        <i class="iconfont icon-fangdajing"></i>
+        <i class="iconfont icon-fangdajing" @click="$router.replace('search')"></i>
         <i class="iconfont icon-gouwuche"></i>
       </div>
     </div>

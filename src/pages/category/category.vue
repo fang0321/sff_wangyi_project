@@ -2,7 +2,7 @@
   <div class="category">
     <!-- 头部 -->
     <div class="header">
-      <div class="search">
+      <div class="search" @click="$router.replace('search')">
         <i class="iconfont icon-fangdajing"></i>
         <span>搜索商品，共26344款好物</span>
       </div>
