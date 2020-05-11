@@ -154,7 +154,7 @@
     }
   }
 </script>
-<style scoped lang="stylus" rel="stylesheet/stylus">
+<style  lang="stylus" rel="stylesheet/stylus" scoped>
   .homePage
     width 100%
     height 100%
@@ -326,6 +326,17 @@
             img
               width 100%
               height auto
+        .swiper-pagination
+          /deep/.swiper-pagination-bullet
+            width 40px
+            height 4px
+            background-color #000
+            opacity .2
+          /deep/.swiper-pagination-bullet-active
+            width 40px
+            height 4px
+            background-color #fff
+            opacity 1
       .serviceWrap //服务栏
         width 100%
         height 72px

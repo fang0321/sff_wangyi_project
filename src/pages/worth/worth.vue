@@ -143,52 +143,63 @@ import "swiper/css/swiper.min.css"
         border-radius 12px
         overflow hidden
         background-color #fff
-        .swiper-wrapper 
+        .swiper-container
           width 100%
           height 540px
-          .swiper-slide
-            float left
-            width 177px 
+          .swiper-wrapper 
+            width 100%
             height 540px
-            padding 36px 3px 3px
-            box-sizing border-box
-            .top
-              width 168px
-              height 201px
-              display flex
-              flex-direction column
-              align-items center
-            .bottom
-              margin-top 28px
-              width 168px
-              height 201px
-              display flex
-              flex-direction column
-              align-items center
-            .Img
-              width 120px
-              height 120px
-            .tit 
-              width 168px
-              height 40px
-              margin-top 8px
-              line-height 40px
-              text-align center
-              color #333
-              font-family 'PingFang-SC-Bold'
-              font-weight bold
-              font-size 28px
-            .txt
-              font-family 'PingFangSC-Regular'
-              width 168px
-              height 30px
-              line-height 30px
-              text-align center
-              color #999
-          .wrapper >>>.swiper-pagination-bullet
-            width 30px !important
-            height 5px !important
-            background-color red !important
+            .swiper-slide
+              float left
+              width 177px 
+              height 540px
+              padding 36px 3px 3px
+              box-sizing border-box
+              .top
+                width 168px
+                height 201px
+                display flex
+                flex-direction column
+                align-items center
+              .bottom
+                margin-top 28px
+                width 168px
+                height 201px
+                display flex
+                flex-direction column
+                align-items center
+              .Img
+                width 120px
+                height 120px
+              .tit 
+                width 168px
+                height 40px
+                margin-top 8px
+                line-height 40px
+                text-align center
+                color #333
+                font-family 'PingFang-SC-Bold'
+                font-weight bold
+                font-size 28px
+              .txt
+                font-family 'PingFangSC-Regular'
+                width 168px
+                height 30px
+                line-height 30px
+                text-align center
+                color #999
+          .swiper-pagination
+            /deep/.swiper-pagination-bullet
+              width 40px
+              height 4px
+              background-color #D9D9D9
+              opacity 1
+            /deep/.swiper-pagination-bullet-active
+              width 40px
+              height 4px
+              background-color #DD1A21
+              opacity 1
+            
     .waterFull
       width 100%
       background-color pink
