@@ -58,6 +58,7 @@
     background-color #fff
     margin 20px 0
     padding 0 30px 30px
+    box-sizing border-box
     .title
       width 690px
       height 90px

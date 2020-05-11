@@ -36,7 +36,68 @@
         </div>
       </div>
     </div>
-    <div class="waterFull"></div>
+    <div class="waterFull">
+      <div class="left">
+        <div class="Item">
+          <img class="Img" src="./worth_1.jpg" alt="">
+          <div class="describe">严选4周年经典品榜——【新人版】</div>
+          <div class="userWrap">
+            <div class="user">
+              <img class="userImg" src="./user.jpg" alt="">
+              <span class="username">选妹</span>
+            </div>
+            <div class="readCountWrap">
+              <i class="iconfont icon-yanjing"></i>
+              <span class="readCount">148k</span>
+            </div>
+          </div>
+        </div>
+        <div class="Item">
+          <img class="Img" src="./worth_1.jpg" alt="">
+          <div class="describe">严选4周年经典品榜——【新人版】</div>
+          <div class="userWrap">
+            <div class="user">
+              <img class="userImg" src="./user.jpg" alt="">
+              <span class="username">选妹</span>
+            </div>
+            <div class="readCountWrap">
+              <i class="iconfont icon-yanjing"></i>
+              <span class="readCount">148k</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="Item">
+          <img class="Img" src="./worth_2.jpg" alt="">
+          <div class="describe">五月已经来临，初夏的这些好物你准备了吗？</div>
+          <div class="userWrap">
+            <div class="user">
+              <img class="userImg" src="./user.jpg" alt="">
+              <span class="username">选妹</span>
+            </div>
+            <div class="readCountWrap">
+              <i class="iconfont icon-yanjing"></i>
+              <span class="readCount">148k</span>
+            </div>
+          </div>
+        </div>
+        <div class="Item">
+          <img class="Img" src="./worth_1.jpg" alt="">
+          <div class="describe">严选4周年经典品榜——【新人版】</div>
+          <div class="userWrap">
+            <div class="user">
+              <img class="userImg" src="./user.jpg" alt="">
+              <span class="username">选妹</span>
+            </div>
+            <div class="readCountWrap">
+              <i class="iconfont icon-yanjing"></i>
+              <span class="readCount">148k</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -69,7 +130,9 @@ import "swiper/css/swiper.min.css"
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .worth
     width 100%
-    padding-top 100px
+    height 100%
+    overflow auto
+    padding 100px 0 97px 0
     background-color #eeeeee
     .header
       width 100%
@@ -201,6 +264,60 @@ import "swiper/css/swiper.min.css"
               opacity 1
             
     .waterFull
-      width 100%
-      background-color pink
+      width 710px
+      padding 0 20px
+      margin-top 20px
+      display flex
+      justify-content space-between
+      .left
+        width 345px
+      .right
+        width 345px
+      .Item
+        width 100%
+        margin-bottom 20px
+        background-color #fff
+        border-radius 20px
+        .Img
+          width 100%
+          border-radius 20px
+        .describe
+          color #333
+          font-size 28px
+          width 311px
+          padding 18px 8px 0
+        .userWrap
+          width 311px
+          height 48px
+          margin-top 20px
+          padding 16px 17px 24px 
+          display flex
+          justify-content space-between
+          .user
+            width 104px
+            height 48px
+            display flex
+            align-items center
+            justify-content space-between
+            .userImg
+              width 44px
+              height 44px
+              border-radius 50%
+            .username
+              color #7f7f7f
+              font-size 24px
+          .readCountWrap
+            width 100px
+            height 48px
+            display flex
+            justify-content color #000
+            align-items center
+            .icon-yanjing
+              font-size 24px
+              color #7f7f7f
+              margin-right 10px
+            .readCount
+              font-size 24px
+              color #7f7f7f
+
 </style>
